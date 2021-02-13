@@ -102,7 +102,43 @@ print(z)
 
 # Ultimate Analysis - Create a function that takes a list and returns a dictionary that has the sumTotal, average, minimum, maximum and length of the list.
 # Example: ultimate_analysis([37,2,1,-9]) should return {'sumTotal': 31, 'average': 7.75, 'minimum': -9, 'maximum': 37, 'length': 4 }
+def ultimate(mylist):
+    numbers = {
+        "sum_total": None,
+        "minimum": None,
+        "maximum": None,
+        "average": None,
+        "length": 0
+    }
+    if (len(mylist)) == 0:
+        return numbers
+    else:
+        numbers["sum_total"] = 0
+        numbers["maximum"] = mylist[0]
+        numbers["minimum"] = mylist[0]
+
+    for x in mylist:
+        if x > numbers["maximum"]:
+            numbers["maximum"] = x
+        elif x < numbers["minimum"]:
+            numbers["minimum"] = x
+        numbers["sum_total"] += x
+        numbers["length"] += 1
+        numbers["average"] = numbers["sum_total"] / len(mylist)
+    return numbers
+
+
+x = ultimate([37,2,1,-9])
+print(x)
+
 
 
 # Reverse List - Create a function that takes a list and return that list with values reversed. Do this without creating a second list. (This challenge is known to appear during basic technical interviews.)
 # Example: reverse_list([37,2,1,-9]) should return [-9,1,2,37]
+def reverse_list(lst):
+    half_len = int(len(lst) / 2)
+    for i in range(half_len):
+        lst[i] , lst[len(lst) - 1 - i] = lst[len(lst) - 1 - i], lst[i]
+    return lst
+
+print(reverse_list([37, 2, 1, 9, 5]))
